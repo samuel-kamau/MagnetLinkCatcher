@@ -11,5 +11,8 @@ Get magnet links from internet without any effort!
   <img src="https://i.imgur.com/IwWW4K1.png" alt="Searching"/>
 
 <p align="center">
+  <img src="https://i.imgur.com/eOEXeh9.png" alt="Results"/>
+
+<p align="center">
   <img src="https://i.imgur.com/7AgDU8X.png" alt="Saved sucessfully"/>
   <img src="https://i.imgur.com/fWny1hX.png" alt="Copied to clipboard"/>
