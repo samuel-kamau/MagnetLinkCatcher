@@ -37,7 +37,7 @@ class GetMagnet():
         for magnet_link in all_magnet_links:
             if magnet_link not in magnet_links:
                 magnet_links[self.get_torrent_name(magnet_link)] = magnet_link
-        
+
         sg.PrintClose()
         return magnet_links
 
