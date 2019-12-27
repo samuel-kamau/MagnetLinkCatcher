@@ -8,6 +8,9 @@ Get magnet links from internet without any effort!
   <img src="https://i.imgur.com/IX8N3Yg.png" alt="Main screen"/>
 
 <p align="center">
+  <img src="https://i.imgur.com/zERFOXN.png" alt="About"/>
+
+<p align="center">
   <img src="https://i.imgur.com/IwWW4K1.png" alt="Searching"/>
 
 <p align="center">
