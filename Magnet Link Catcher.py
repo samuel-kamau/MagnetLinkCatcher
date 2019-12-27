@@ -18,6 +18,7 @@ sg.LOOK_AND_FEEL_TABLE["MagnetLinkCatcher"] = {
     'BORDER': 0, 'SLIDER_DEPTH': 0, 'PROGRESS_DEPTH': 0,
 }
 
+
 sg.change_look_and_feel("MagnetLinkCatcher")
 
 main_layout = [
@@ -51,35 +52,34 @@ while True:
 
         about_layout = [
             [sg.Text("\n", font=("Segoe UI Light", 1))],
-            [sg.Text("    This project was born with an idea for automatize torrent downloading.\n    I don't wanna search for torrent and see boring adverts. This application\n    search on Google and return all found magnet links and is able to start\n    the default torrent application, copy links and save its to file.",
-                     font=("Segoe UI", 12), size=(58, 0))],
+            [sg.Text("This project was born with an idea for automatize torrent downloading.\nI don't wanna search for torrent and see boring adverts. This program search on Google and return all found magnet links and is able to start the default torrent application, copy links and save its to file.", font = ("Segoe UI", 12), size = (56, 0), justification="left")],
             [sg.Text("\n", font=("Segoe UI Light", 1))],
             [sg.Text(" " * 101), sg.Button("Close", size=(12, 0),
-                                           font=("Segoe UI Light", 10, "bold"))],
-            [sg.Text("\n", font=("Segoe UI Light", 1))]
+                                           font = ("Segoe UI Light", 10, "bold"))],
+            [sg.Text("\n", font = ("Segoe UI Light", 1))]
         ]
 
-        about_window = sg.Window("About project", about_layout)
+        about_window=sg.Window("About project", about_layout)
 
         while True:
-            about_event, about_values = about_window.read()
+            about_event, about_values=about_window.read()
             if about_event in (None, "Close"):
                 about_window.close()
                 break
 
     if event == "Search":
-        download_pages = process.get_download_pages(values[0])
-        dict_download_links = process.get_download_links(download_pages)
-        download_links = []
+        download_pages=process.get_download_pages(values[0])
+        dict_download_links=process.get_download_links(download_pages)
+        download_links=[]
 
         [download_links.append(i) for i in dict_download_links.keys()]
 
-        results_layout = [
-            [sg.Text("\n", font=("Segoe UI Light", 5))],
-            [sg.Text("Process finished sucessfully!", font=(
-                "Segoe UI Light", 14), size=(30, 0), justification="left")],
-            [sg.Text("\n", font=("Segoe UI Light", 1))],
-            [sg.Listbox(values=download_links, size=(90, 15),
+        results_layout=[
+            [sg.Text("\n", font = ("Segoe UI Light", 5))],
+            [sg.Text("Process finished sucessfully!", font = (
+                "Segoe UI Light", 14), size = (30, 0), justification = "left")],
+            [sg.Text("\n", font = ("Segoe UI Light", 1))],
+            [sg.Listbox(values = download_links, size = (90, 15),
                         font=("Segoe UI", 10), enable_events=True)],
             [sg.Text("\n", font=("Segoe UI Light", 1))],
             [sg.Text(" " * 16), sg.Button("Save all links to file", size=(22, 0), font=("Segoe UI Light", 10, "bold")),
