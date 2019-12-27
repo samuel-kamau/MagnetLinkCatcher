@@ -1,11 +1,11 @@
-import os
-import pyperclip
-from scripts.get_magnet import GetMagnet
-from gui.design import *
 try:
     import PySimpleGUI as sg
 except:
     print("Your system doesn't have python3-tk package installed.\nPlease install it using your package manager.\nAPT: sudo apt install python3-tk")
+import os
+import pyperclip
+from scripts.get_magnet import GetMagnet
+from gui.design import *
 
 
 window = sg.Window("Magnet Link Catcher", main_layout, size=(430, 280))

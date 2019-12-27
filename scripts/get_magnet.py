@@ -24,8 +24,7 @@ class GetMagnet():
         error = None
 
         for link in download_pages_links:
-            sg.Print(f"Searching in: {link}\n", font=(
-                "Segoe UI", 10), no_button=True)
+            sg.Print(f"Searching in: {link}\n", font=("Segoe UI", 10), no_button=True)
             request = requests.get(link)
             result = BeautifulSoup(request.content, "html.parser")
 
