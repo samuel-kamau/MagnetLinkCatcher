@@ -4,8 +4,7 @@ import PySimpleGUI as sg
 import urllib.parse
 from bs4 import BeautifulSoup
 
-
-class GetMagnet():
+class GetMagnet:
     def get_download_pages(self, movie_title):
         google_url = f"https://www.google.com/search?q={urllib.parse.quote_plus(movie_title)}+download+torrent"
         request = requests.get(google_url)
