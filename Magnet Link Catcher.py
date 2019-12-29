@@ -117,7 +117,6 @@ while True:
                     [sg.Text("\n", font=("Segoe UI Light", 1))]
                 ]
 
-                clipboard_window = sg.Window(
-                    "Sucess!", clipboard_layout, auto_close=True)
+                clipboard_window = sg.Window("Sucess!", clipboard_layout, auto_close=True)
 
                 clipboard_event, clipboard_result = clipboard_window.read()
