@@ -1,6 +1,5 @@
 import requests
 import os
-import re
 import PySimpleGUI as sg
 import urllib.parse
 from bs4 import BeautifulSoup, SoupStrainer
