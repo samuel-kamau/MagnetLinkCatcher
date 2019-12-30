@@ -1,20 +1,21 @@
 import requests
 import os
+import re
 import PySimpleGUI as sg
 import urllib.parse
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, SoupStrainer
 
 class GetMagnet:
     def get_download_pages(self, movie_title):
         google_url = f"https://www.google.com/search?q={urllib.parse.quote_plus(movie_title)}+download+torrent"
         request = requests.get(google_url)
-        result = BeautifulSoup(request.content, "lxml")
+        result = BeautifulSoup(request.content, "lxml", parse_only=SoupStrainer('a'))
 
         download_pages_links = []
-        
-        for i in result.find_all("a"):
-            if (i.attrs["href"].startswith("/url?q=")) and ("accounts.google.com" not in i.attrs["href"]):
-                download_pages_links.append(i.attrs["href"][7:-88])
+
+        for i in result.find_all("a", href=True):
+            if (i.get("href").startswith("/url?q=")) and ("accounts.google.com" not in i.get("href")) and (".org" not in i.get("href")) and ("youtube.com" not in i.get("href")) and ("facebook.com" not in i.get("href")):
+                download_pages_links.append(i.get("href")[7:-88])
 
         return download_pages_links
 
@@ -26,12 +27,11 @@ class GetMagnet:
             sg.Print(f"Searching in: {link}\n", font=("Segoe UI", 10), no_button=True)
             # print(f"Searching in: {link}\n")
             request = requests.get(link)
-            result = BeautifulSoup(request.content, "lxml")
+            result = BeautifulSoup(request.content, "lxml", parse_only=SoupStrainer('a'))
 
-            for i in result.find_all("a"):
-                if "href" in i.attrs:
-                    if "magnet:?xt=" in i.attrs["href"]:
-                        all_magnet_links.append(i.attrs["href"])
+            for i in result.find_all("a", href=True):
+                if i.get("href").startswith("magnet:?xt="):
+                    all_magnet_links.append(i.get("href"))
 
         for magnet_link in all_magnet_links:
             if magnet_link not in magnet_links:
@@ -53,7 +53,7 @@ class GetMagnet:
                 file.write(f"{name}\n{magnet_link}\n\n")
 
 # process = GetMagnet()
-# pages = process.get_download_pages("Movie here")
+# pages = process.get_download_pages("vingadores ultimato")
+# print(pages)
 # links = process.get_download_links(pages)
-# for k, v in links.items():
-#     print(f"\n{k}\n\n{v}\n\n")
+# print(links)

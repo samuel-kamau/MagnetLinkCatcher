@@ -14,7 +14,6 @@ sg.LOOK_AND_FEEL_TABLE["MagnetLinkCatcher"] = {
     'BORDER': 0, 'SLIDER_DEPTH': 0, 'PROGRESS_DEPTH': 0,
 }
 
-
 sg.change_look_and_feel("MagnetLinkCatcher")
 
 main_layout = [
