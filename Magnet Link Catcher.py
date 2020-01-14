@@ -38,7 +38,6 @@ process = GetMagnet()
 
 while True:
     event, values = window.read()
-    print(event, values)
 
     if event in (None, "Exit"):
         window.close()
