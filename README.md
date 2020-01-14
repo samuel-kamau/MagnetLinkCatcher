@@ -1,6 +1,6 @@
-# Magnet Link Catcher
+# Magnet Link Catcher 🧲
 
-## Get magnet links from internet without any effort!
+## Get magnet links from internet without any effort! 🧲
 
 ### Getting started
 
