@@ -56,8 +56,8 @@ while True:
                 break
 
     if event == "Search":
-        download_pages = process.get_download_pages(values[0])
-        dict_download_links = process.get_download_links(download_pages)
+        dict_download_links = process.get_magnet(values[0], google = True, tpb = False, l337x = False, nyaa = False, eztv = False, yts = False)
+
         download_links = []
 
         [download_links.append(i) for i in dict_download_links.keys()]
@@ -78,6 +78,8 @@ while True:
             results_event, results_values = results_window.read()
 
             if results_event in (None, "Close"):
+                process.links = {}
+                dict_download_links, download_links = {}, []
                 results_window.close()
                 break
 
