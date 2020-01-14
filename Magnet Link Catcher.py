@@ -22,16 +22,23 @@ main_layout = [
     [sg.Text("    Search for something", font=("Segoe UI Light", 14))],
     [sg.Text("\n", font=("Segoe UI Light", 1))],
     [sg.Text("  "), sg.InputText(size=(28, 6), font=("Segoe UI Light", 12)), sg.VerticalSeparator(pad=(4, (3, 4))), sg.Submit("Search", size=(12, 0), font=("Segoe UI Light", 10, "bold"))],
+    [sg.Text("\n", font=("Segoe UI Light", 1))],
+    [sg.Text("    Choose your search source for content", font=("Segoe UI Light", 14))],
+    [sg.Text("\n", font=("Segoe UI Light", 1))],
+    [sg.Text("  "), sg.Checkbox("Google", font=("Segoe UI Light", 12), size=(12, 1), default=True), sg.Checkbox("The Pirate Bay", font=("Segoe UI Light", 12), size=(16, 1)), sg.Checkbox("1337x", font=("Segoe UI Light", 12))],
+    [sg.Text("  "), sg.Checkbox("Nyaa", font=("Segoe UI Light", 12), size=(12, 1)), sg.Checkbox("EZTV", font=("Segoe UI Light", 12), size=(16, 1)), sg.Checkbox("YTS", font=("Segoe UI Light", 12))],
+    [sg.Text("\n", font=("Segoe UI Light", 1))],
     [sg.Text("  "), sg.Button("Support this project", size=(17, 0), font=("Segoe UI Light", 10, "bold")), sg.VerticalSeparator(pad=(6, 3)), sg.Button("About", size=(7, 0), font=("Segoe UI Light", 10, "bold")), sg.VerticalSeparator(pad=(6, 3)), sg.Button("Exit", size=(12, 0), font=("Segoe UI Light", 10, "bold"))],
     [sg.Text("\nDeveloped by Pedro Lemos (@pedrolemoz)", font=("Segoe UI Light", 12), size=(42, 0), justification="center")]
 ]
 
-window = sg.Window("Magnet Link Catcher", main_layout, size=(430, 280))
+window = sg.Window("Magnet Link Catcher", main_layout, size=(430, 410))
 
 process = GetMagnet()
 
 while True:
     event, values = window.read()
+    print(event, values)
 
     if event in (None, "Exit"):
         window.close()
@@ -41,7 +48,7 @@ while True:
 
         about_layout = [
             [sg.Text("\n", font=("Segoe UI Light", 1))],
-            [sg.Text("This project was born with an idea for automatize torrent downloading.\nI don't wanna search for torrent and see boring adverts. This program search on Google and return all found magnet links and is able to start the default torrent application, copy links and save its to file.", font = ("Segoe UI", 12), size = (56, 0), justification="left")],
+            [sg.Text("This project was born with an idea for automatize torrent downloading.\nI don't wanna search for torrent and see boring adverts. This program search on many sources and return all found magnet links and is able to start the default torrent application, copy links and save its to file.", font = ("Segoe UI", 12), size = (56, 0), justification="left")],
             [sg.Text("\n", font=("Segoe UI Light", 1))],
             [sg.Text(" " * 101), sg.Button("Close", size=(12, 0), font = ("Segoe UI Light", 10, "bold"))],
             [sg.Text("\n", font = ("Segoe UI Light", 1))]
@@ -56,7 +63,7 @@ while True:
                 break
 
     if event == "Search":
-        dict_download_links = process.get_magnet(values[0], google = True, tpb = False, l337x = False, nyaa = False, eztv = False, yts = False)
+        dict_download_links = process.get_magnet(values[0], google = values[1], tpb = values[2], l337x = values[3], nyaa = values[4], eztv = values[5], yts = values[6])
 
         download_links = []
 

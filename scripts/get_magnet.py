@@ -8,7 +8,7 @@ class GetMagnet:
 	def __init__(self):
 		self.links = {}
 	
-	def get_magnet(self, search_content, google = True, tpb = False, l337x=False, nyaa = False, eztv = False, yts = False):
+	def get_magnet(self, search_content, google = True, tpb = False, l337x = False, nyaa = False, eztv = False, yts = False):
 		search_content = urllib.parse.quote_plus(f"{search_content}")
 		
 		if google:
@@ -55,11 +55,11 @@ class GetMagnet:
 	def get_download_pages_from_google(self, search_content):
 		google_url = f"https://www.google.com/search?q={search_content}+download+torrent"
 		request = requests.get(google_url)
-		result = BeautifulSoup(request.content, "lxml", parse_only=SoupStrainer('a'))
+		result = BeautifulSoup(request.content, "lxml", parse_only=SoupStrainer("a"))
 		
 		download_pages_links = []
 		
-		for i in result.find_all("a", href=True):
+		for i in result.find_all("a", href = True):
 			if (i.get("href").startswith("/url?q=")) and ("accounts.google.com" not in i.get("href")) and (".org" not in i.get("href")) and ("youtube.com" not in i.get("href")) and ("facebook.com" not in i.get("href")):
 				download_pages_links.append(i.get("href")[7:-88])
 		
@@ -68,11 +68,11 @@ class GetMagnet:
 	def get_download_pages_from_l337x(self, search_content):
 		l337x_url = f"https://www.1377x.to/search/{search_content}/1/"
 		request = requests.get(l337x_url)
-		result = BeautifulSoup(request.content, "lxml", parse_only=SoupStrainer('a'))
+		result = BeautifulSoup(request.content, "lxml", parse_only=SoupStrainer("a"))
 		
 		download_pages_links = []
 		
-		for i in result.find_all("a", href=True):
+		for i in result.find_all("a", href = True):
 			if i.get("href").startswith("/torrent") and i.get("href") not in download_pages_links:
 				download_pages_links.append(f'https://www.1377x.to{i.get("href")}')
 		
@@ -81,11 +81,11 @@ class GetMagnet:
 	def get_download_pages_from_yts(self, search_content):
 		yts_url = f"https://yts.lt/browse-movies/{search_content}/all/all/0/latest"
 		request = requests.get(yts_url)
-		result = BeautifulSoup(request.content, "lxml", parse_only=SoupStrainer('a'))
+		result = BeautifulSoup(request.content, "lxml", parse_only=SoupStrainer("a"))
 		
 		download_pages_links = []
 		
-		for i in result.find_all("a", href=True):
+		for i in result.find_all("a", href = True):
 			if i.get("href").startswith("https://yts.lt/movie/") and i.get("href") not in download_pages_links:
 				download_pages_links.append(i.get("href"))
 		
@@ -99,9 +99,9 @@ class GetMagnet:
 			sg.Print(f"Searching in: {link}\n", font=("Segoe UI", 10), no_button=True)
 			# print(f"Searching in: {link}\n")
 			request = requests.get(link)
-			result = BeautifulSoup(request.content, "lxml", parse_only=SoupStrainer('a'))
+			result = BeautifulSoup(request.content, "lxml", parse_only=SoupStrainer("a"))
 			
-			for i in result.find_all("a", href=True):
+			for i in result.find_all("a", href = True):
 				if i.get("href").startswith("magnet:?xt="):
 					all_magnet_links.append(i.get("href"))
 		
