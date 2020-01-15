@@ -1,27 +1,66 @@
-# Magnet Link Catcher
+<p align="center">
+  <img src="https://i.imgur.com/lUaUCP0.png" alt="Logo"/>
 
 ## Get magnet links from internet without any effort! 🧲
 
-### Getting started
+## Getting started
 
-In order to run this program, you'll need:
+### From a installer
+
+Download the installer for Windows [here](https://github.com/pedrolemoz/MagnetLinkCatcher/#).
+
+> Installer will be added soon
+
+### From source
+
+In order to run this program from source, you'll need:
 
 * Latest version of Python3
+* Git (optional)
 * Install dependencies
 
-#### How to install
+To install Python3, please visit [Python official website](https://www.python.org/downloads/), download and install the latest package available. If you are using GNU/Linux, you may already have Python3 installed in your system. Type ```python3 --version``` to check.
 
-To install Python3, please visit [Python official website](https://www.python.org/downloads/), download and install the latest package available.
+To install Git, please visit [Git official website](https://git-scm.com/downloads), download and install the latest package available. Setup Git with your name and email. Clone the repository to your machine using the following command:
 
-To install dependencies, type the following command in your command prompt or terminal:
+```
+git clone https://github.com/pedrolemoz/MagnetLinkCatcher.git
+```
+
+If you don't wanna install Git, just download the ```.zip``` from this repository (the green button above), and unzip it in your machine.
+
+To install dependencies, type the following command in your command prompt or terminal (make sure to be in the project directory):
 
 ```
 pip install -r requeriments.txt
 ```
 
+### Building the application
+
+If you forked this project and want to build your executable, there's a script to do it. I used ```cx_Freeze``` to build the program.
+
+Install ```cx_Freeze``` using ```pip``` with the following command:
+
+```
+pip install cx-Freeze
+```
+
+To build the application:
+
+```
+python build_application.py build
+```
+
+It will create a folder called ```build``` with the executable inside.
+
+> Note 1: I don't know why, but cx_Freeze doesn't work in Python 3.8. I'm currently using Python 3.7.6 to build this project.
+
+> Note 2: If your executable fail to start, try rename the folder Tkinter in lib directory to tkinter.
+
+
 ### How to use
 
-Type what content you wanna links for, in the box, select one or more of sources and click in the search button.
+Type what content you wanna links for, in the search box, select one or more of sources and click in the search button.
 
 By now, supported sources are:
 
