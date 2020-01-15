@@ -9,8 +9,6 @@
 
 Download the installer for Windows [here](https://sourceforge.net/projects/magnetlinkcatcher/files/latest/download).
 
-> Installer will be added soon
-
 ### From source
 
 In order to run this program from source, you'll need:
