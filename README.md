@@ -7,7 +7,7 @@
 
 ### From a installer
 
-Download the installer for Windows [here](https://github.com/pedrolemoz/MagnetLinkCatcher/#).
+Download the installer for Windows [here](https://sourceforge.net/projects/magnetlinkcatcher/files/latest/download).
 
 > Installer will be added soon
 
