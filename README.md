@@ -72,6 +72,7 @@ By now, supported sources are:
 After the search is finished, you can:
 
 * Save all links to a text file
+  > Links are saved to your Downloads folder by default
 * Open the selected magnet link with your default torrent client
 * Copy the magnet link to your clipboard
 
