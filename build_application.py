@@ -1,3 +1,4 @@
+import os
 from cx_Freeze import setup, Executable
 
 target = Executable (
@@ -13,9 +14,8 @@ setup (
     author = "Pedro Lemos",
     options = {
                 "build_exe": {
-                        "optimize": 1,
                         "packages": ["os", "tkinter", "PySimpleGUI", "pyperclip", "requests", "urllib.parse", "bs4"],
-                        "include_files": ["icon.ico"]
+                        "include_files": ["icon.ico", "icon.png"]
                     }
             },
     

@@ -9,7 +9,7 @@ sg.LOOK_AND_FEEL_TABLE["MagnetLinkCatcher"] = {
     'INPUT': "#dfe2e8",
     'TEXT_INPUT': '#000000',
     'SCROLL': '#c7e78b',
-    'BUTTON': ("white", "#DA4453"),
+    'BUTTON': ("white", "#ff0000"),
     'PROGRESS': ("white", "black"),
     'BORDER': 0, 'SLIDER_DEPTH': 0, 'PROGRESS_DEPTH': 0,
 }
@@ -18,7 +18,7 @@ sg.change_look_and_feel("MagnetLinkCatcher")
 
 main_layout = [
     [sg.Text("\n", font=("Segoe UI Light", 5))],
-    [sg.Text("  Magnet Link Catcher", font=("Segoe UI Light", 24), text_color="#DA4453", justification="left")],
+    [sg.Text("  Magnet Link Catcher", font=("Segoe UI Light", 24), text_color="#ff0000", justification="left"), sg.Image("icon.png")],
     [sg.Text("    Search for something", font=("Segoe UI Light", 14))],
     [sg.Text("\n", font=("Segoe UI Light", 1))],
     [sg.Text("  "), sg.InputText(size=(28, 6), font=("Segoe UI Light", 12)), sg.VerticalSeparator(pad=(4, (3, 4))), sg.Submit("Search", size=(12, 0), font=("Segoe UI Light", 10, "bold"))],
@@ -43,8 +43,10 @@ while True:
         window.close()
         break
 
-    if event == "About":
+    if event == "Support this project":
+        os.startfile("https://github.com/pedrolemoz/MagnetLinkCatcher/")
 
+    if event == "About":
         about_layout = [
             [sg.Text("\n", font=("Segoe UI Light", 1))],
             [sg.Text("This project was born with an idea for automatize torrent downloading.\nI don't wanna search for torrent and see boring adverts. This program search on many sources and return all found magnet links and is able to start the default torrent application, copy links and save its to file.", font = ("Segoe UI", 12), size = (56, 0), justification="left")],
@@ -62,7 +64,7 @@ while True:
                 break
 
     if event == "Search":
-        dict_download_links = process.get_magnet(values[0], google = values[1], tpb = values[2], l337x = values[3], nyaa = values[4], eztv = values[5], yts = values[6])
+        dict_download_links = process.get_magnet(values[1], google = values[2], tpb = values[3], l337x = values[4], nyaa = values[5], eztv = values[6], yts = values[7])
 
         download_links = []
 
@@ -90,7 +92,7 @@ while True:
                 break
 
             if results_event == "Save all links to file":
-                process.magnets_to_file(dict_download_links, values[0])
+                path_to_file = process.magnets_to_file(dict_download_links, values[1])
 
                 save_layout = [
                     [sg.Text("\n", font=("Segoe UI Light", 5))],
@@ -110,7 +112,7 @@ while True:
                         break
 
                     if save_event == "Open file":
-                        os.startfile(f"{values[0]}.txt")
+                        os.startfile(os.path.join(path_to_file, f"{values[1]}.txt"))
 
             if results_event == "Open magnet link":
                 os.startfile(dict_download_links[results_values[0][0]])

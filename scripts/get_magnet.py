@@ -2,6 +2,7 @@ import requests
 import os
 import PySimpleGUI as sg
 import urllib.parse
+from pathlib import Path
 from bs4 import BeautifulSoup, SoupStrainer
 
 class GetMagnet:
@@ -121,6 +122,13 @@ class GetMagnet:
 		return urllib.parse.unquote_plus(name)
 	
 	def magnets_to_file(self, magnet_links, filename):
-		with open(f"{filename}.txt", "w", encoding="utf-8") as file:
+		if os.path.exists(os.path.join(Path.home(), "Downloads", "MagnetLinkCatcher")) == False:
+			os.mkdir(os.path.join(Path.home(), "Downloads", "MagnetLinkCatcher"))
+		
+		path_to_file = os.path.join(Path.home(), "Downloads", "MagnetLinkCatcher")
+		
+		with open(os.path.join(path_to_file, f"{filename}.txt"), "w", encoding="utf-8") as file:
 			for name, magnet_link in magnet_links.items():
 				file.write(f"{name}\n{magnet_link}\n\n")
+
+		return path_to_file

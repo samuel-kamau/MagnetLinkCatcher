@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://i.imgur.com/lUaUCP0.png" alt="Logo"/>
+  <img src="https://i.imgur.com/ry6s1OO.png" alt="Logo"/>
 
 ## Get magnet links from internet without any effort! 🧲
 
