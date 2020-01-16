@@ -3,7 +3,7 @@ import os
 import pyperclip
 from scripts.get_magnet import GetMagnet
 
-sg.LOOK_AND_FEEL_TABLE["MagnetLinkCatcher"] = {
+sg.LOOK_AND_FEEL_TABLE["MagnetLinkCatcherLight"] = {
     'BACKGROUND': "white",
     'TEXT': "#323232",
     'INPUT': "#dfe2e8",
@@ -14,7 +14,18 @@ sg.LOOK_AND_FEEL_TABLE["MagnetLinkCatcher"] = {
     'BORDER': 0, 'SLIDER_DEPTH': 0, 'PROGRESS_DEPTH': 0,
 }
 
-sg.change_look_and_feel("MagnetLinkCatcher")
+sg.LOOK_AND_FEEL_TABLE["MagnetLinkCatcherDark"] = {
+    'BACKGROUND': "#191919",
+    'TEXT': "#cccccc",
+    'INPUT': "#dfe2e8",
+    'TEXT_INPUT': '#000000',
+    'SCROLL': '#c7e78b',
+    'BUTTON': ("white", "#ff0000"),
+    'PROGRESS': ("white", "black"),
+    'BORDER': 0, 'SLIDER_DEPTH': 0, 'PROGRESS_DEPTH': 0,
+}
+
+sg.change_look_and_feel("MagnetLinkCatcherDark")
 
 main_layout = [
     [sg.Text("\n", font=("Segoe UI Light", 5))],
@@ -27,12 +38,13 @@ main_layout = [
     [sg.Text("\n", font=("Segoe UI Light", 1))],
     [sg.Text("  "), sg.Checkbox("Google", font=("Segoe UI Light", 12), size=(11, 1), default=True), sg.Checkbox("The Pirate Bay", font=("Segoe UI Light", 12), size=(16, 1)), sg.Checkbox("1337x", font=("Segoe UI Light", 12))],
     [sg.Text("  "), sg.Checkbox("Nyaa", font=("Segoe UI Light", 12), size=(11, 1)), sg.Checkbox("EZTV", font=("Segoe UI Light", 12), size=(16, 1)), sg.Checkbox("YTS", font=("Segoe UI Light", 12))],
+    [sg.Text("  "), sg.Checkbox("ETTV", font=("Segoe UI Light", 12))],
     [sg.Text("\n", font=("Segoe UI Light", 1))],
     [sg.Text("  "), sg.Button("Support this project", size=(17, 0), font=("Segoe UI Light", 10, "bold")), sg.VerticalSeparator(pad=(6, 3)), sg.Button("About", size=(7, 0), font=("Segoe UI Light", 10, "bold")), sg.VerticalSeparator(pad=(6, 3)), sg.Button("Exit", size=(12, 0), font=("Segoe UI Light", 10, "bold"))],
     [sg.Text("\nDeveloped by Pedro Lemos (@pedrolemoz)", font=("Segoe UI Light", 12), size=(42, 0), justification="center")]
 ]
 
-window = sg.Window("Magnet Link Catcher", main_layout, size=(430, 410), icon="icon.ico")
+window = sg.Window("Magnet Link Catcher", main_layout, size=(430, 450), icon="icon.ico")
 
 process = GetMagnet()
 
@@ -64,7 +76,7 @@ while True:
                 break
 
     if event == "Search":
-        dict_download_links = process.get_magnet(values[1], google = values[2], tpb = values[3], l337x = values[4], nyaa = values[5], eztv = values[6], yts = values[7])
+        dict_download_links = process.get_magnet(values[1], google = values[2], tpb = values[3], l337x = values[4], nyaa = values[5], eztv = values[6], yts = values[7], ettv = values[8])
 
         download_links = []
 
