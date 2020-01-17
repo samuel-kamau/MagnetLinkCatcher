@@ -1,7 +1,16 @@
+
 <p align="center">
   <img src="https://i.imgur.com/ry6s1OO.png" alt="Logo"/>
 
 ## Get magnet links from internet without any effort! 🧲
+
+## Screenshoots
+
+<p align="center">
+  <img src="https://github.com/pedrolemoz/MagnetLinkCatcher/raw/master/assets/screenshot_main_menu_light.png" alt="Menu light"/>
+  <img src="https://github.com/pedrolemoz/MagnetLinkCatcher/raw/master/assets/screenshot_main_menu_dark.png" alt="Menu light"/>
+  
+*Main menu in light and dark themes (under development)*
 
 ## Getting started
 
