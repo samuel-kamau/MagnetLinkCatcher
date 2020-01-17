@@ -25,7 +25,7 @@ sg.LOOK_AND_FEEL_TABLE["MagnetLinkCatcherDark"] = {
     'BORDER': 0, 'SLIDER_DEPTH': 0, 'PROGRESS_DEPTH': 0,
 }
 
-sg.change_look_and_feel("MagnetLinkCatcherDark")
+sg.change_look_and_feel("MagnetLinkCatcherLight")
 
 main_layout = [
     [sg.Text("\n", font=("Segoe UI Light", 5))],
