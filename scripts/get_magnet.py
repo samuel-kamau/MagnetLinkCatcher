@@ -1,5 +1,6 @@
 import requests
 import os
+import time
 import PySimpleGUI as sg
 import urllib.parse
 from pathlib import Path
@@ -9,7 +10,7 @@ class GetMagnet:
 	def __init__(self):
 		self.links = {}
 	
-	def get_magnet(self, search_content, google = True, tpb = False, l337x = False, nyaa = False, rarbg = False, eztv = False, yts = False, demonoid = False, ettv = False):
+	def get_magnet(self, search_content, google = True, tpb = False, l337x = False, nyaa = False, eztv = False, yts = False, demonoid = False, ettv = False):
 		search_content = urllib.parse.quote_plus(f"{search_content}")
 		
 		if google:
@@ -40,12 +41,6 @@ class GetMagnet:
 			link = self.get_download_links(pages)
 			self.links.update(link)
 
-		if rarbg:
-			print(True)
-			pages = self.get_download_pages_from_rarbg(search_content)		
-			link = self.get_download_links(pages)
-			self.links.update(link)
-		
 		if eztv:
 			pages = [f"https://eztv.io/search/{search_content}"]
 			
@@ -93,19 +88,6 @@ class GetMagnet:
 		for i in result.find_all("a", href = True):
 			if i.get("href").startswith("/torrent") and i.get("href") not in download_pages_links:
 				download_pages_links.append(f'https://www.1377x.to{i.get("href")}')
-		
-		return download_pages_links
-
-	def get_download_pages_from_rarbg(self, search_content):
-		rarbg_url = f"https://rarbgproxied.org/torrents.php?search={search_content}"
-		request = requests.get(rarbg_url)
-		result = BeautifulSoup(request.content, "lxml", parse_only=SoupStrainer("a"))
-		
-		download_pages_links = []
-		
-		for i in result.find_all("a", href = True):
-			if (i.get("href").startswith("/torrent/") and i.get("href").endswith("#comments") == False) and i.get("href") not in download_pages_links:
-				download_pages_links.append(f'https://rarbgproxied.org{i.get("href")}')
 		
 		return download_pages_links
 
@@ -168,6 +150,7 @@ class GetMagnet:
 		for link in download_pages_links:
 			sg.Print(f"Searching in: {link}\n", font=("Segoe UI", 10), no_button=True)
 			# print(f"Searching in: {link}\n")
+
 			request = requests.get(link)
 			result = BeautifulSoup(request.content, "lxml", parse_only=SoupStrainer("a"))
 			
@@ -201,7 +184,3 @@ class GetMagnet:
 				file.write(f"{name}\n{magnet_link}\n\n")
 
 		return path_to_file
-
-# k = GetMagnet()
-# g = k.get_magnet("avengers endgame", google = False, rarbg = True)
-# print(g)

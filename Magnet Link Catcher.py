@@ -37,8 +37,8 @@ main_layout = [
     [sg.Text("    Choose your search source for content", font=("Segoe UI Light", 14))],
     [sg.Text("\n", font=("Segoe UI Light", 1))],
     [sg.Text("  "), sg.Checkbox("Google", font=("Segoe UI Light", 12), size=(11, 1), default=True), sg.Checkbox("The Pirate Bay", font=("Segoe UI Light", 12), size=(16, 1)), sg.Checkbox("1337x", font=("Segoe UI Light", 12))],
-    [sg.Text("  "), sg.Checkbox("Nyaa", font=("Segoe UI Light", 12), size=(11, 1)), sg.Checkbox("RARBG", font=("Segoe UI Light", 12), size=(16, 1)), sg.Checkbox("EZTV", font=("Segoe UI Light", 12))],
-    [sg.Text("  "), sg.Checkbox("YTS", font=("Segoe UI Light", 12), size=(11, 1)), sg.Checkbox("Demonoid", font=("Segoe UI Light", 12), size=(16, 1)), sg.Checkbox("ETTV", font=("Segoe UI Light", 12))],
+    [sg.Text("  "), sg.Checkbox("Nyaa", font=("Segoe UI Light", 12), size=(11, 1)), sg.Checkbox("EZTV", font=("Segoe UI Light", 12), size=(16, 1)), sg.Checkbox("YTS", font=("Segoe UI Light", 12))],
+    [sg.Text("  "), sg.Checkbox("Demonoid", font=("Segoe UI Light", 12), size=(11, 1)), sg.Checkbox("ETTV", font=("Segoe UI Light", 12), size=(16, 1))],
     [sg.Text("\n", font=("Segoe UI Light", 1))],
     [sg.Text("  "), sg.Button("Support this project", size=(17, 0), font=("Segoe UI Light", 10, "bold")), sg.VerticalSeparator(pad=(6, 3)), sg.Button("About", size=(7, 0), font=("Segoe UI Light", 10, "bold")), sg.VerticalSeparator(pad=(6, 3)), sg.Button("Exit", size=(12, 0), font=("Segoe UI Light", 10, "bold"))],
     [sg.Text("\nDeveloped by Pedro Lemos (@pedrolemoz)", font=("Segoe UI Light", 12), size=(42, 0), justification="center")]
@@ -76,7 +76,7 @@ while True:
                 break
 
     if event == "Search":
-        dict_download_links = process.get_magnet(values[1], google = values[2], tpb = values[3], l337x = values[4], nyaa = values[5], rarbg = values[6], eztv = values[7], yts = values[8], demonoid = values[9], ettv = values[10])
+        dict_download_links = process.get_magnet(values[1], google = values[2], tpb = values[3], l337x = values[4], nyaa = values[5], eztv = values[6], yts = values[7], demonoid = values[8], ettv = values[9])
 
         download_links = []
 
